@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from django.http import JsonResponse
+from plagiarism import fetchresults
 
-# Create your views here.
+def api(request):
+	if request.method == "POST":
+		language = request.POST.get('lang')
+		code = request.POST.get('code')
+		return JsonResponse(plagiarism.fetchresults(language, code))
