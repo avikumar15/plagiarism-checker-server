@@ -2,8 +2,8 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import requests
 import re
-# Paste your Access token here
-token = "access_token=" + "93b53c152f465923da3427d1e1d0c3ff20e747c9"
+import os
+token = "access_token=" + os.environ.get('GITHUB_API_TOKEN')
 
 # Base API Endpoint
 base_api_url = 'https://api.github.com/'
