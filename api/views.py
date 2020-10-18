@@ -1,4 +1,5 @@
 from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 import requests
 import re
 # Paste your Access token here
@@ -62,6 +63,7 @@ def fetchresults(code):
 						result_items[repo_id]['matches'] = item['text_matches']
 	return results
 
+@csrf_exempt
 def api(request):
 	if request.method == "POST":
 		code = request.body.decode('utf-8')
